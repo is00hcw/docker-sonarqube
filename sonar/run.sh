@@ -21,6 +21,9 @@ do
     fi
 done < <(env)
 
+
+sysctl -w vm.max_map_count=262144
+
 exec java -jar lib/sonar-application-$SONAR_VERSION.jar \
   -Dsonar.log.console=true \
   -Dsonar.jdbc.username="$SONARQUBE_JDBC_USERNAME" \
